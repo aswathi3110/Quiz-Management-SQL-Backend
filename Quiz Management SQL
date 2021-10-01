@@ -1,1 +1,24 @@
+// Quiz Management- SQL database backend
+// Aswathi Manoj Kumar
+## indicates output given in the SQL server
 
+create table player(user_id int, name char(50), mobile int, email varchar(50), lastlogindate date, dob date,constraint pk_uid primary key(user_id));
+## Table created.
+
+create table host(host_id int, name char(50), mobile int, email varchar(50), lastlogindate date, dob date,constraint pk_hid primary key(host_id));
+## Table created.
+
+create table quiz_question(ques_id int,question varchar2(500), diff_level char(10), score int, created_at date, updated_at date, constraint pk_qid primary key(ques_id));
+## Table created.
+
+create table quiz_answer(ans_id int, ques_id int,answer varchar2(500), created_at date, updated_at date, constraint pk_aid primary key(ans_id), 
+constraint fk_qid foreign key(ques_id) references quiz_question);
+## Table created.
+
+create table take_quiz(user_id int, ques_id int, answer varchar2(500), status char(10), scored int,constraint fk_quid foreign key(ques_id) references quiz_question, 
+constraint fk_usid foreign key(user_id) references player);
+## Table created.
+
+create table quiz(quiz_id int, title varchar2(50), host_id int, user_id int, marks_scored int, summary varchar2(50), constraint pk_quizid primary key(quiz_id),
+constraint fk_userid foreign key(user_id) references player,constraint fk_hostid foreign key(host_id) references host);
+## Table created.

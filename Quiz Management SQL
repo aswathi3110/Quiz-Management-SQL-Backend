@@ -22,3 +22,277 @@ constraint fk_usid foreign key(user_id) references player);
 create table quiz(quiz_id int, title varchar2(50), host_id int, user_id int, marks_scored int, summary varchar2(50), constraint pk_quizid primary key(quiz_id),
 constraint fk_userid foreign key(user_id) references player,constraint fk_hostid foreign key(host_id) references host);
 ## Table created.
+
+// Inserting two players
+
+insert into player values(&user_id,'&name',&mobile,'&email','&lastlogindate','&dob');
+##Enter value for user_id: 131014
+  Enter value for name: Aarav
+  Enter value for mobile: 9833482771
+  Enter value for email: ar@gmail.com
+  Enter value for lastlogindate: 30-sep-2021
+  Enter value for dob: 22-may-2002
+  old   1: insert into player values(&user_id,'&name',&mobile,'&email','&lastlogindate','&dob')
+  new   1: insert into player values(131014,'Aarav',9833482771,'ar@gmail.com','30-sep-2021','22-may-2002')
+
+  1 row created.
+ 
+/
+##Enter value for user_id: 131015
+  Enter value for name: Rita
+  Enter value for mobile: 9199721931
+  Enter value for email: ri@gmail.com
+  Enter value for lastlogindate: 16-jul-2021
+  Enter value for dob: 12-jun-2002
+  old   1: insert into player values(&user_id,'&name',&mobile,'&email','&lastlogindate','&dob')
+  new   1: insert into player values(131015,'Rita',9199721931,'ri@gmail.com','16-jul-2021','12-jun-2002')
+
+  1 row created.
+  
+ // Inserting one host
+ 
+ insert into host values(&host_id,'&name',&mobile,'&email','&lastlogindate','&dob');
+ ##Enter value for host_id: 1001
+   Enter value for name: Aswathi
+   Enter value for mobile: 9167221031
+   Enter value for email: ash@gmail.com
+   Enter value for lastlogindate: 01-oct-2021
+   Enter value for dob:  31-oct-2002
+   old   1: insert into host values(&host_id,'&name',&mobile,'&email','&lastlogindate','&dob')
+   new   1: insert into host values(1001,'Aswathi',9167221031,'ash@gmail.com','01-oct-2021',' 31-oct-2002')
+
+   1 row created.
+   
+  // Inserting two questions for quiz
+   
+insert into quiz_question values(&ques_id,'&question','&diff_level',&score,'&created_at','&updated_at');
+##Enter value for ques_id: 101
+  Enter value for question: What is the capital of India?
+  Enter value for diff_level: easy
+  Enter value for score: 5
+  Enter value for created_at: 01-oct-2021
+  Enter value for updated_at: 01-oct-2021
+  old   1: insert into quiz_question values(&ques_id,'&question','&diff_level',&score,'&created_at','&updated_at')
+  new   1: insert into quiz_question values(101,'What is the capital of India?','easy',5,'01-oct-2021','01-oct-2021')
+
+  1 row created.
+
+/
+##Enter value for ques_id: 102
+  Enter value for question: What is the capital of Jamaica?
+  Enter value for diff_level: medium
+  Enter value for score: 6
+  Enter value for created_at: 01-oct-2021
+  Enter value for updated_at: 01-oct-2021
+  old   1: insert into quiz_question values(&ques_id,'&question','&diff_level',&score,'&created_at','&updated_at')
+  new   1: insert into quiz_question values(102,'What is the capital of Jamaica?','medium',6,'01-oct-2021','01-oct-2021')
+
+  1 row created.
+ 
+//Creating the answer key
+
+insert into quiz_answer values(&ans_id,&ques_id,'&answer','&created_at','&updated_at');
+##Enter value for ans_id: 1011
+  Enter value for ques_id: 101
+  Enter value for answer: New Delhi
+  Enter value for created_at: 01-oct-2021
+  Enter value for updated_at: 01-oct-2021
+  old   1: insert into quiz_answer values(&ans_id,&ques_id,'&answer','&created_at','&updated_at')
+  new   1: insert into quiz_answer values(1011,101,'New Delhi','01-oct-2021','01-oct-2021')
+
+  1 row created.
+
+ /
+##Enter value for ans_id: 1022
+  Enter value for ques_id: 102
+  Enter value for answer: Kingsten
+  Enter value for created_at: 01-oct-2021
+  Enter value for updated_at: 01-oct-2021
+  old   1: insert into quiz_answer values(&ans_id,&ques_id,'&answer','&created_at','&updated_at')
+  new   1: insert into quiz_answer values(1022,102,'Kingsten','01-oct-2021','01-oct-2021')
+
+  1 row created.
+  
+  //Players attempting the quiz
+  //Default score 0 and status empty
+  
+insert into take_quiz values(&user_id,&ques_id,'&answer','&status',&score);
+##Enter value for user_id: 131014
+  Enter value for ques_id: 101
+  Enter value for answer: New Delhi
+  Enter value for status:
+  Enter value for score: 0
+  old   1: insert into take_quiz values(&user_id,&ques_id,'&answer','&status',&score)
+  new   1: insert into take_quiz values(131014,101,'New Delhi','',0)
+
+  1 row created.
+
+ /
+##Enter value for user_id: 131014
+  Enter value for ques_id: 102
+  Enter value for answer: Kingsten
+  Enter value for status:
+  Enter value for score: 0
+  old   1: insert into take_quiz values(&user_id,&ques_id,'&answer','&status',&score)
+  new   1: insert into take_quiz values(131014,102,'Kingsten','',0)
+
+  1 row created.
+
+ /
+##Enter value for user_id: 131015
+  Enter value for ques_id: 101
+  Enter value for answer: New Delhi
+  Enter value for status:
+  Enter value for score: 0
+  old   1: insert into take_quiz values(&user_id,&ques_id,'&answer','&status',&score)
+  new   1: insert into take_quiz values(131015,101,'New Delhi','',0)
+
+  1 row created.
+
+/
+##Enter value for user_id: 131015
+  Enter value for ques_id: 102
+  Enter value for answer: Sydney
+  Enter value for status:
+  Enter value for score: 0
+  old   1: insert into take_quiz values(&user_id,&ques_id,'&answer','&status',&score)
+  new   1: insert into take_quiz values(131015,102,'Sydney','',0)
+
+1 row created.
+  
+// Updating the scores and status of all the players
+
+update take_quiz set scored=5, status='CORRECT' where ques_id=101 and answer=(select answer from quiz_answer where ans_id=1011);
+##2 rows updated.
+update take_quiz set scored=0, status='INCORRECT' where ques_id=101 and answer!=(select answer from quiz_answer where ans_id=1011);
+##0 rows updated.
+update take_quiz set scored=6, status='CORRECT' where ques_id=102 and answer=(select answer from quiz_answer where ans_id=1022);
+##1 row updated.
+update take_quiz set scored=0, status='INCORRECT' where ques_id=102 and answer!=(select answer from quiz_answer where ans_id=1022);
+##1 row updated.
+
+select * from take_quiz;
+//View of the table
+
+
+   USER_ID    QUES_ID
+---------- ----------
+ANSWER
+--------------------------------------------------------------------------------
+STATUS         SCORED
+---------- ----------
+    131014        101
+New Delhi
+CORRECT             5
+
+    131014        102
+Kingsten
+CORRECT             6
+
+   USER_ID    QUES_ID
+---------- ----------
+ANSWER
+--------------------------------------------------------------------------------
+STATUS         SCORED
+---------- ----------
+
+    131015        101
+New Delhi
+CORRECT             5
+
+    131015        102
+Sydney
+
+   USER_ID    QUES_ID
+---------- ----------
+ANSWER
+--------------------------------------------------------------------------------
+STATUS         SCORED
+---------- ----------
+INCORRECT           0
+
+
+// Setting up quiz stats
+// Default value of total score is 0 and summary is null
+
+insert into quiz values(&quiz_id, '&title',&host_id, &user_id, &marks_scored, '&summary');
+##Enter value for quiz_id: 1235
+  Enter value for title: Country Capitals
+  Enter value for host_id: 1001
+  Enter value for user_id: 131014
+  Enter value for marks_scored: 0
+  Enter value for summary:
+  old   1: insert into quiz values(&quiz_id, '&title',&host_id, &user_id, &marks_scored, '&summary')
+  new   1: insert into quiz values(1235, 'Country Capitals',1001, 131014, 0, '')
+ 
+  1 row created.
+
+/
+##Enter value for quiz_id: 1234
+  Enter value for title: Country Capitals
+  Enter value for host_id: 1001
+  Enter value for user_id: 131015
+  Enter value for marks_scored: 0
+  Enter value for summary:
+  old   1: insert into quiz values(&quiz_id, '&title',&host_id, &user_id, &marks_scored, '&summary')
+  new   1: insert into quiz values(1234, 'Country Capitals',1001, 131015, 0, '')
+
+  1 row created.
+
+//Calculating the total marks of each player and updating it
+
+select sum(scored) from take_quiz where user_id=131014;
+#
+SUM(SCORED)
+-----------
+         11
+update quiz set marks_scored=11 where user_id=131014;
+1 row updated.
+
+select sum(scored) from take_quiz where user_id=131015;
+#
+SUM(SCORED)
+-----------
+          5
+update quiz set marks_scored=5 where user_id=131015;
+1 row updated.
+
+select max(marks_scored) from quiz;
+#
+MAX(MARKS_SCORED)
+-----------------
+               11
+ update quiz set summary='WINNER!!' where marks_scored=11;
+ #1 row updated.
+ 
+//Viewing the the final results
+
+ select * from quiz;
+
+   QUIZ_ID TITLE                                                 HOST_ID
+---------- -------------------------------------------------- ----------
+   USER_ID MARKS_SCORED SUMMARY
+---------- ------------ --------------------------------------------------
+      1234 Country Capitals                                         1001
+    131015            5
+
+      1235 Country Capitals                                         1001
+    131014           11 WINNER!!
+
+//Viewing the details of the winner
+select * from player p, quiz q where p.user_id=q.user_id and q.summary='WINNER!!';
+
+   USER_ID NAME                                                   MOBILE
+---------- -------------------------------------------------- ----------
+EMAIL                                              LASTLOGIN DOB
+-------------------------------------------------- --------- ---------
+   QUIZ_ID TITLE                                                 HOST_ID
+---------- -------------------------------------------------- ----------
+   USER_ID MARKS_SCORED SUMMARY
+---------- ------------ --------------------------------------------------
+    131014 Aarav                                              9833482771
+ar@gmail.com                                       30-SEP-21 22-MAY-02
+      1235 Country Capitals                                         1001
+    131014           11 WINNER!!
+  
+ // Note:Many more functionalities can be added
